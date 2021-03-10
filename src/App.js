@@ -5,14 +5,12 @@ import { Routes } from './cube/router';
 import { routeConfig } from './routeConfig';
 
 // import './App.css';
-
+import './assets/css/common.scss';
 
 export default () => {
     return (
         <Router>
-            <div className="App">
-                <Routes routes={routeConfig} />
-            </div>
+            <Routes routes={routeConfig} />
         </Router>
     )
 }
