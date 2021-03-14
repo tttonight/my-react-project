@@ -1,7 +1,32 @@
 .app-layout {
     height: 100%;
+    .ant-layout-sider-children>.logo {
+        height: 32px;
+        margin: 8px;
+        text-align: center;
+        font-size: 24px;
+        color: #ffffff;
+    }
+
+    .site-layout .header-content {
+        height: 48px;
+        background: #fff;
+
+        .userinfo {
+            float: right;
+            line-height: 48px;
+            cursor: pointer;
+        }
+      }
+
     .main-content {
-        height: 1000%;
-        border: 1px solid #ddd;
+        height: 100%;
+        padding: 24px;
+        .sub-main-content {
+            height: 100%;
+            border-radius: 5px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px 0 rgba(204,204,204,0.5);
+        }
     }
 }

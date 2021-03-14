@@ -4,7 +4,7 @@ import React from 'react';
 export default (props => {
     return (
         <div className="test">
-            1233333
+            <h1>123</h1>
         </div>
     )
 })
