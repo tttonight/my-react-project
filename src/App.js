@@ -5,6 +5,7 @@ import { Routes } from './cube/router';
 import { routeConfig } from './routeConfig';
 
 // import './App.css';
+import 'src/data/mock';
 import './assets/css/common.scss';
 
 export default () => {

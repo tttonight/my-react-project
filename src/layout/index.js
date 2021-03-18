@@ -16,7 +16,7 @@ const { Header, Content, Sider } = Layout;
 export default props => {
     return (
         <Layout className="app-layout">
-            <Sider >
+            <Sider width={200}>
                 <div className="logo" >LOGO</div>
                 <HorizontalMenu
                     menus={menus}

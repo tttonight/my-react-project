@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { ConfigProvider } from 'antd';
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
+import 'moment/locale/zh-cn';
+import './index.css';
 ReactDOM.render(
-  <App />
+  <ConfigProvider locale={zh_CN}>
+    <App />
+  </ConfigProvider>
   ,
   document.getElementById('root')
 );

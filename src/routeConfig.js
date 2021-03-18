@@ -5,6 +5,8 @@ import Layout from './layout';
 import config from './config';
 
 import Test from './pages/test';
+// example
+import MyTable from './pages/example/myTable';
 
 const { routePrefix } = config;
 
@@ -31,6 +33,13 @@ export const routeConfig = [
                 tag: 'Route',
                 path: `${routePrefix}/test`,
                 component: Test,
+                exact: true,
+            },
+            {
+                name: 'myTable',
+                tag: 'Route',
+                path: `${routePrefix}/example/myTable`,
+                component: MyTable,
                 exact: true,
             },
             {

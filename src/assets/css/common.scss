@@ -14,3 +14,13 @@ html body {
     font-size: 14px;
     font-family: "Microsoft YaHei", "sans-serif", "Helvetica"; //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 }
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #d9d9d9;
+}
