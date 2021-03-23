@@ -23,13 +23,6 @@ export default props => {
     const tableRef = useRef(null);
     const columnMinWidth = useRef({});
 
-    useEffect(() => {
-        setTimeout(() => {
-            const { scroll, columns } = getColumnsAndScroll(props);
-            setColumns(columns);
-            setScroll(scroll);
-        });
-    }, [dataSource])
 
     // 无数据显示
     const customizeRenderEmpty = () =>
@@ -63,7 +56,7 @@ export default props => {
         // const sdTable = document.getElementById(id || 'sdTable');
         const tableWidth = tableRef.current ? tableRef.current.offsetWidth : window.innerWidth;
 
-        const scrollbarWith = 16;
+        const scrollbarWith = 8;
         const anchorWidth = getAnchorWidth(columns) || 0;
         const averageNum = getAverageNum(columns);
         const rowKeysWidth = rowSelection ? 60 : 0;
@@ -99,6 +92,15 @@ export default props => {
             return Math.max(length, curLength);
         }, Math.min(calcCharNum(title), 40));
     }
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            const { scroll, columns } = getColumnsAndScroll(props);
+            setColumns(columns);
+            setScroll(scroll);
+        });
+    }, [dataSource, getColumnsAndScroll])
 
     const paginationProps = useMemo(() => {
         return props.pagination

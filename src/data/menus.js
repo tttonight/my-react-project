@@ -16,8 +16,8 @@ const menus = [
         url: ``,
         children: [{
             id: '12',
-            name: 'menu1',
-            url: `${routePrefix}/test`,
+            name: '自适应表格列宽',
+            url: `${routePrefix}/example/myTable`,
         }]
     }, {
         id: '2',

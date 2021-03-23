@@ -1,51 +1,106 @@
-import { useState } from 'react';
-// import { defaultPageSize, tableExpcetHeight } from 'src/configs';
+import { useReducer } from 'react';
+// import { defaultPageSize } from 'src/configs';
 
-export default (topRef) => {
-    const [loading, setLoading] = useState(false);
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-    const [selectedRows, setSelectedRows] = useState([]);
+const tableReducer = (state, action) => {
+    const [type, payload] = action;
+    switch (type) {
+        case 'setLoading':
+            return { ...state, loading: true };
+        case 'setSelectedRowKeys':
+            return {
+                ...state,
+                selectedRowKeys: payload || []
+            };
+        case 'setSelectedRows':
+            return {
+                ...state,
+                selectedRows: payload || []
+            };
+        case 'setTable':
+            return {
+                ...state,
+                tableData: payload.data,
+                loading: false,
+                pagination: {
+                    ...state.pagination,
+                    total: payload.total
+                }
+            };
+        case 'resetPagination':
+            return {
+                ...state,
+                pagination: {
+                    ...state.pagination,
+                    current: 1
+                }
+            };
+        case 'setPagination':
+            return {
+                ...state,
+                pagination: payload
+            };
+        // 操作
+        case 'setAction':
+            return {
+                ...state,
+                action: payload.action,
+                actionDetail: payload.actionDetail || {}
+            }
+        default: throw new Error();
+    }
+}
 
-    const [pagination, setPagination] = useState({
+const initailValue = {
+    loading: false,
+    selectedRowKeys: [],
+    selectedRows: [],
+    tableData: [],
+    pagination: {
         current: 1,
-        pageSize: 10,
-        total: 0,
-        onChange: (current) => {
-            setPagination(pagination => ({
-                ...pagination,
-                current
-            }));
+        pageSize: 5,
+        total: 0
+    },
+    // 操作类型
+    action: false,
+    // 操作数据
+    actionDetail: {}
+}
+
+export default (props) => {
+    const [state, dispatch] = useReducer(tableReducer, initailValue);
+
+    const pagination = {
+        ...state.pagination,
+        onChange: (current, pageSize) => {
+            dispatch(['setPagination', {
+                ...state.pagination,
+                current,
+                pageSize
+            }]);
         },
-        onShowSizeChange: (current, pageSize) => {
-            setPagination(pagination => ({
-                ...pagination,
+        onShowSizeChange: (_, pageSize) => {
+            dispatch(['setPagination', {
+                ...state.pagination,
                 pageSize,
                 current: 1
-            }));
-        }
-    });
+            }]);
 
-
-
-    const rowSelection = {
-        selectedRowKeys,
-        fixed: true,
-        onChange: (selectedRowKeys, selectedRows) => {
-            setSelectedRowKeys(selectedRowKeys);
-            setSelectedRows(selectedRows);
         }
     }
 
+    const rowSelection = {
+        selectedRowKeys: state.selectedRowKeys,
+        fixed: true,
+        onChange: (selectedRowKeys, selectedRows) => {
+            dispatch(['setSelectedRowKeys', selectedRowKeys]);
+            dispatch(['setSelectedRows', selectedRows]);
+        }
+    }
 
     return {
-        pagination,
-        setPagination,
-        loading,
-        setLoading,
-        selectedRowKeys,
-        setSelectedRowKeys,
-        selectedRows,
-        setSelectedRows,
+        ...state,
+        dispatch,
         rowSelection,
-    };
+        pagination
+    }
 }
