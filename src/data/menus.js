@@ -12,12 +12,16 @@ const { routePrefix } = config;
 const menus = [
     {
         id: '1',
-        name: 'example',
+        name: '公共组件',
         url: ``,
         children: [{
-            id: '12',
+            id: '11',
             name: '自适应表格列宽',
             url: `${routePrefix}/example/myTable`,
+        }, {
+            id: '12',
+            name: '下拉框异步数据加载',
+            url: `${routePrefix}/example/mySelect`,
         }]
     }, {
         id: '2',

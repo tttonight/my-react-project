@@ -7,6 +7,7 @@ import config from './config';
 import Test from './pages/test';
 // example
 import MyTable from './pages/example/myTable';
+import MySelect from './pages/example/meSelect';
 
 const { routePrefix } = config;
 
@@ -40,6 +41,13 @@ export const routeConfig = [
                 tag: 'Route',
                 path: `${routePrefix}/example/myTable`,
                 component: MyTable,
+                exact: true,
+            },
+            {
+                name: 'MySelect',
+                tag: 'Route',
+                path: `${routePrefix}/example/mySelect`,
+                component: MySelect,
                 exact: true,
             },
             {
