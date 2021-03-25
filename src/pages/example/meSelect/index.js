@@ -1,12 +1,11 @@
 /**
  * 
  */
-import React, { useEffect, useState } from 'react';
-import { Select, Input } from 'antd';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { Select } from 'antd';
 
-import { ContainerBody, ETable } from 'src/components';
-import { useSelectListHook, useSelecthostNameHooks } from 'src/components/useHook/useSelectListHook';
+import { ContainerBody } from 'src/components';
+import { useSelecthostNameHooks } from 'src/components/useHook/useSelectListHook';
 
 const { Option } = Select;
 

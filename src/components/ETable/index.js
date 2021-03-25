@@ -100,7 +100,7 @@ export default props => {
             setColumns(columns);
             setScroll(scroll);
         });
-    }, [dataSource, getColumnsAndScroll])
+    }, [props, dataSource, getColumnsAndScroll])
 
     const paginationProps = useMemo(() => {
         return props.pagination

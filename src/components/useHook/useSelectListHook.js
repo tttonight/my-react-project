@@ -1,7 +1,7 @@
 /**
  * 下拉hooks 
  */
-import { useReducer, useState, useEffect, useCallback, useMemo } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 

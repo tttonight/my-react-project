@@ -17,18 +17,19 @@ export const routeConfig = [
     {
         tag: 'Redirect',
         from: '/',
-        to: `${routePrefix}/test`,
+        to: `${routePrefix}/`,
         exact: true,
     },
     {
-        name: 'test',
-        tag: 'Route',
-        path: `${routePrefix}/login`,
-        component: Test
-    }, {
         tag: 'Route',
         component: Layout,
         routes: [
+            {
+                tag: 'Redirect',
+                from: `${routePrefix}/`,
+                to: `${routePrefix}/example/myTable`,
+                exact: true,
+            },
             {
                 name: 'test',
                 tag: 'Route',

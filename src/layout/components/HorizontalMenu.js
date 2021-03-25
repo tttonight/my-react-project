@@ -38,6 +38,7 @@ const getRoutes = (routeConfig) => {
 export default props => {
     const { menus } = props;
     const [selectedKeys, setSelectedKeys] = useState([]);
+    const [openKeys, setOpenKeys] = useState([]);
 
     const flattenedMenu = useRef(flattenMenus(menus));
 
@@ -74,6 +75,11 @@ export default props => {
 
         const routers = getRoutes(routeConfig);
         const selectedKeys = getSelectKeys(flattenedMenu.current, routers, pathname);
+
+        const selectedData = flattenedMenu.current.find(item => item.id === selectedKeys[0]);
+        if (selectedData) {
+            setOpenKeys(selectedData.pKey);
+        }
         setSelectedKeys(selectedKeys);
     }, [props])
 
@@ -117,6 +123,7 @@ export default props => {
             // mode="horizontal"
             // defaultSelectedKeys={['2']}
             selectedKeys={selectedKeys}
+            openKeys={openKeys}
         >
             {renderMenuItem(menus)}
         </Menu>

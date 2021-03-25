@@ -23,15 +23,25 @@ const menus = [
             name: '下拉框异步数据加载',
             url: `${routePrefix}/example/mySelect`,
         }]
-    }, {
-        id: '2',
-        name: 'menu2',
-        url: `${routePrefix}/test1`
-    }, {
-        id: '3',
-        name: 'menu3',
-        url: `${routePrefix}/test2/2`
-    }
+    },
+    // {
+    //     id: '2',
+    //     name: 'menu2',
+    //     // url: `${routePrefix}/test1`,
+    //     children: [{
+    //         id: '21',
+    //         name: '自适应表格列宽',
+    //         url: `${routePrefix}/example/myTable2`,
+    //     }, {
+    //         id: '22',
+    //         name: '下拉框异步数据加载',
+    //         url: `${routePrefix}/example/mySelect1`,
+    //     }]
+    // }, {
+    //     id: '3',
+    //     name: 'menu3',
+    //     url: `${routePrefix}/test2/2`
+    // }
 ];
 
 export default menus;
